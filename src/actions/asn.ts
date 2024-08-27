@@ -4,7 +4,7 @@ import { RTBHDetails } from "@/types/rtbh";
 
 const BASE_API = "http://103.158.253.146:40011/neighbor2.json";
 
-export async function getRBTHData() {
+export async function getRTBHData() {
   // Maybe I'll use database caching
   try {
     const resp = await fetch(BASE_API);

@@ -1,6 +1,6 @@
 "use client";
 
-import { getRBTHData } from "@/actions/asn";
+import { getRTBHData } from "@/actions/asn";
 import RTBHDetail from "@/components/detail";
 import { RTBHDetails } from "@/types/rtbh";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ export default function DetailsPage() {
   const [includePrivate, setIncludePrivate] = useState<boolean>(false);
 
   async function fetchData() {
-    const res = await getRBTHData();
+    const res = await getRTBHData();
 
     if (typeof res === "string") setErr(res);
     else setData(res.filter((r) => !r.asn.toLowerCase().includes("invalid")));
@@ -24,7 +24,7 @@ export default function DetailsPage() {
 
   return (
     <div className="my-[2vh] ml-2 mr-2 text-sm md:text-xl">
-      <div className="mb-3 pb-1 border-b border-black">RBTH-1 MTen</div>
+      <div className="mb-3 pb-1 border-b border-black">RTBH-1 MTen</div>
       <div className="flex flex-col gap-2 mb-3 pb-2 border-b border-black">
         <div className="flex gap-2">
           Search
