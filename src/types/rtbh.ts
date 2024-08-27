@@ -1,4 +1,4 @@
-export type RBTHDetails = {
+export type RTBHDetails = {
   link: string;
   asn: string;
   org: string;

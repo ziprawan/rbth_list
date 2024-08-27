@@ -1,12 +1,12 @@
 "use client";
 
 import { getRBTHData } from "@/actions/asn";
-import RBTHDetail from "@/components/detail";
-import { RBTHDetails } from "@/types/rbth";
+import RTBHDetail from "@/components/detail";
+import { RTBHDetails } from "@/types/rtbh";
 import { useEffect, useState } from "react";
 
 export default function DetailsPage() {
-  const [data, setData] = useState<RBTHDetails[] | null>(null);
+  const [data, setData] = useState<RTBHDetails[] | null>(null);
   const [search, setSearch] = useState<string>("");
   const [err, setErr] = useState<string | null>(null);
   const [includePrivate, setIncludePrivate] = useState<boolean>(false);
@@ -53,7 +53,7 @@ export default function DetailsPage() {
           })
           .map((d) => {
             const type = d.asn.toLowerCase().includes("private") ? "private" : "valid";
-            return <RBTHDetail key={d.asn + d.id + d.ip} type={type} rbth={d} />;
+            return <RTBHDetail key={d.asn + d.id + d.ip} type={type} rtbh={d} />;
           })
       ) : (
         <div>Loading...</div>
