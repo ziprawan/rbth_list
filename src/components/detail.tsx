@@ -6,12 +6,19 @@ import { useState } from "react";
 
 export default function RBTHDetail({ rbth }: { rbth: RBTHDetails }) {
   const [open, setOpen] = useState<boolean>(false);
+  const isPrivate = rbth.asn.toLowerCase().includes("private");
 
   return (
     <div className="mb-2">
       <div className="flex justify-between underline decoration-blue-500">
         <div onClick={() => setOpen((o) => !o)} className="cursor-pointer">
-          {rbth.asn}
+          {isPrivate ? (
+            <>
+              {rbth.link} {rbth.org} <span className="font-bold">[PRIVATE]</span>
+            </>
+          ) : (
+            rbth.asn
+          )}
         </div>
         <div onClick={() => setOpen((o) => !o)} className="cursor-pointer">
           v

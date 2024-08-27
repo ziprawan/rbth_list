@@ -14,7 +14,7 @@ export default function DetailsPage() {
     const res = await getRBTHData();
 
     if (typeof res === "string") setErr(res);
-    else setData(res.filter((r) => !r.asn.toLowerCase().includes("invalid") && !r.asn.toLowerCase().includes("private")));
+    else setData(res.filter((r) => !r.asn.toLowerCase().includes("invalid")));
   }
 
   useEffect(() => {
