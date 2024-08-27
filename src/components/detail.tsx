@@ -4,9 +4,9 @@ import { RBTHDetails } from "@/types/rbth";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function RBTHDetail({ rbth }: { rbth: RBTHDetails }) {
+export default function RBTHDetail({ rbth, type }: { rbth: RBTHDetails; type: "valid" | "private" }) {
   const [open, setOpen] = useState<boolean>(false);
-  const isPrivate = rbth.asn.toLowerCase().includes("private");
+  const isPrivate = type === "private";
 
   return (
     <div className="mb-2">

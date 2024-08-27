@@ -38,8 +38,15 @@ export default function DetailsPage() {
         <div>Error! {err}</div>
       ) : data ? (
         data
-          .filter((d) => d.asn.toLowerCase().includes(search.toLowerCase()))
-          .map((d) => <RBTHDetail key={d.asn + d.id + d.ip} rbth={d} />)
+          .filter((d) => {
+            const isPrivate = d.asn.toLowerCase().includes("private");
+
+            return (isPrivate ? d.org : d.asn).toLowerCase().includes(search.toLowerCase());
+          })
+          .map((d) => {
+            const type = d.asn.toLowerCase().includes("private") ? "private" : "valid";
+            return <RBTHDetail key={d.asn + d.id + d.ip} type={type} rbth={d} />;
+          })
       ) : (
         <div>Loading...</div>
       )}
